@@ -5,11 +5,12 @@
 - minikube
 
 ## Test scenario
-We already gained access to a container and we need to find out as
+We already gained access to a target and we need to find out as
 many information as possible in the filesystem
 
 ## Test application
-We are going to deploy a basic wordpress app see [this url](https://kubernetes.io/docs/tutorials/stateful-application/mysql-wordpress-persistent-volume/) 
+We are going to deploy a basic wordpress app. You can find a step-by-step
+ guide [here](https://kubernetes.io/docs/tutorials/stateful-application/mysql-wordpress-persistent-volume/) 
 You can also find the required yaml files in the current project.
 
 ## Topics covered (or at least introduced)
