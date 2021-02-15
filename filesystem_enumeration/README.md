@@ -29,6 +29,11 @@ Use the `env` command. What we discovered:
         - Hostname
         - Service ports 
 
+### Enumerate files and binaries
+
+We used [linpeas](https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/linPEAS)
+to find information about the filesystem. 
+
 ### Find kubernetes specific information
 e.g., look into: `/run/secrets/kubernetes.io`
 
@@ -41,3 +46,20 @@ our deployment.
 A sample deployment file can be found [here](./docker_in_docker_example/deployment.yaml).
 We run tests by using the [dockerode](https://github.com/apocas/dockerode) library
 that comes installed as a dependency in the machine.
+
+Snippet used: 
+
+````js
+var Docker = require('dockerode');
+var docker = new Docker({socketPath: '/var/run/docker.sock'});
+// List and print containers
+docker.listContainers(function (err, containers) {
+  containers.forEach(function (containerInfo) {
+    console.log(containerInfo)
+  });
+});
+// Run container
+docker.run('ubuntu', ['bash', '-c', 'uname -a'], process.stdout, function (err, data, container) {
+  console.log(data.StatusCode);
+});
+````
