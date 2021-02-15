@@ -1,29 +1,29 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: docker-deployment
+  name: prober-deployment
   labels:
-    app: docker-test
+    app: prober-test
     version: latest
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: docker-test
+      app: prober-test
   template:
     metadata:
       labels:
-        app: docker-test
+        app: prober-test
     spec:
       containers:
-      - name: docker-test
+      - name: prober-test
         image: jackops93/inspector_base:1.0.2
         ports:
         - containerPort: 8081
         volumeMounts:
-          - name: docker
+          - name: prober
             mountPath: /var/run/
       volumes:
-      - name: docker
+      - name: prober
         hostPath:
           path: /var/run/
